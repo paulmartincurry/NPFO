@@ -1,6 +1,7 @@
 import Phaser from 'phaser'
 import BootScene from './scenes/BootScene.js'
 import TitleScene from './scenes/TitleScene.js'
+import PanelScene from './scenes/PanelScene.js'
 import PlayScene from './scenes/PlayScene.js'
 import UIScene from './scenes/UIScene.js'
 import PauseScene from './scenes/PauseScene.js'
@@ -28,7 +29,11 @@ const config = {
       debug: false
     }
   },
-  scene: [BootScene, TitleScene, PlayScene, UIScene, PauseScene]
+  // Register PanelScene between TitleScene and PlayScene to handle
+  // interstitial zine-style intros. TitleScene will start PanelScene
+  // with the appropriate panels and then PanelScene will load
+  // PlayScene.
+  scene: [BootScene, TitleScene, PanelScene, PlayScene, UIScene, PauseScene]
 }
 
 // Instantiate the Phaser.Game with our configuration. When the window
@@ -69,6 +74,33 @@ window.addEventListener('load', () => {
         const m = e.target.checked
         AudioBus.setMute(m)
         try { localStorage.setItem('muted', m ? 'true' : 'false') } catch (e) {}
+      })
+    }
+    // Restore and bind shake slider, flash and grain toggles
+    const shakeSlider = document.getElementById('shakeSlider')
+    const flashCheckbox = document.getElementById('flashCheckbox')
+    const grainCheckbox = document.getElementById('grainCheckbox')
+    // Helper to load values from localStorage
+    const loadVal = (k, fallback) => {
+      const v = localStorage.getItem(k)
+      return v !== null ? v : fallback
+    }
+    if (shakeSlider) {
+      shakeSlider.value = loadVal('shake', '0.6')
+      shakeSlider.addEventListener('input', (e) => {
+        try { localStorage.setItem('shake', String(e.target.value)) } catch (e) {}
+      })
+    }
+    if (flashCheckbox) {
+      flashCheckbox.checked = loadVal('flash', 'true') === 'true'
+      flashCheckbox.addEventListener('change', (e) => {
+        try { localStorage.setItem('flash', e.target.checked ? 'true' : 'false') } catch (e) {}
+      })
+    }
+    if (grainCheckbox) {
+      grainCheckbox.checked = loadVal('grain', 'false') === 'true'
+      grainCheckbox.addEventListener('change', (e) => {
+        try { localStorage.setItem('grain', e.target.checked ? 'true' : 'false') } catch (e) {}
       })
     }
   } catch (e) {
