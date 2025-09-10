@@ -1,12 +1,16 @@
 import Phaser from 'phaser'
 import BootScene from './scenes/BootScene.js'
 import TitleScene from './scenes/TitleScene.js'
-import PanelScene from './scenes/PanelScene.js'
+import PanelScene from './PanelScene.js'
 import PlayScene from './scenes/PlayScene.js'
 import UIScene from './scenes/UIScene.js'
 import PauseScene from './scenes/PauseScene.js'
 import { GAME_WIDTH, GAME_HEIGHT } from './systems/constants.js'
 import { AudioBus } from './systems/audio.js'
+import GameOverScene from './GameOverScene.js'
+import WinScene from './WinScene.js'
+import CreditsScene from './CreditsScene.js'
+
 
 // Phaser game configuration. This sets up the canvas size, physics engine,
 // and the list of scenes that compose our game. We expose the stage
@@ -33,11 +37,7 @@ const config = {
   // interstitial zine-style intros. TitleScene will start PanelScene
   // with the appropriate panels and then PanelScene will load
   // PlayScene.
-  scene: [BootScene, TitleScene, PanelScene, PlayScene, UIScene, PauseScene]
-}
-
-// Instantiate the Phaser.Game with our configuration. When the window
-// loads this will kick off BootScene which in turn shows the title.
+scene:[BootScene, TitleScene, PanelScene, PlayScene, UIScene, PauseScene, GameOverScene, WinScene, CreditsScene]
 const game = new Phaser.Game(config)
 
 // On window load, restore audio preferences and bind UI controls. We
