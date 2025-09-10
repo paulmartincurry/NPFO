@@ -23,4 +23,16 @@ export class Chant {
   isOnBeat(windowMs = 120) {
     return (this.scene.time.now - this.lastBeatTime) <= windowMs;
   }
+
+  /**
+   * Return true if we are currently within a beat window of the last beat.
+   * This is an alias for isOnBeat but provided for clarity and external
+   * callers.
+   *
+   * @param {number} windowMs
+   * @returns {boolean}
+   */
+  onBeatWindow(windowMs = 120) {
+    return this.isOnBeat(windowMs);
+  }
 }
