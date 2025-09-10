@@ -1,0 +1,11 @@
+{
+  "street_punk": {
+    "name": "Street Punk",
+    "base": { "hp": 10, "speed": 1.0, "jump": -400 },
+    "moves": {
+      "light": { "dmg": 1, "rebel": 4, "knock": { "x": 250, "y": -150 } },
+      "heavy": { "dmg": 2, "rebel": 8, "knock": { "x": 320, "y": -170 } },
+      "special": { "cost": 50, "radius": 90, "dmg": 2 }
+    }
+  }
+}
