@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>NPFO</title>
+<style>
+  body { margin:0; background:#000; color:#fff; font-family:monospace; }
+  canvas { display:block; margin:0 auto; background:#111; }
+  .overlay { position:absolute; top:0; left:0; width:100%; height:100%; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,0.8); text-align:center; }
+  .overlay.visible { display:flex; }
+</style>
+</head>
+<body>
+<canvas id="game" width="640" height="360"></canvas>
+<div id="title" class="overlay visible">
+  <div>
+    <h1>NPFO</h1>
+    <p>Press Enter</p>
+    <p>Press H for controls</p>
+  </div>
+</div>
+<div id="controls" class="overlay">
+  <div>
+    <h2>Controls</h2>
+    <p>&larr;/&rarr; move, &uarr; jump</p>
+    <p>Z jab, X heavy, C dash</p>
+    <p>V Rebel, P pause, D debug HUD</p>
+    <p>Press Esc</p>
+  </div>
+</div>
+<div id="stage" class="overlay"><h2>Stage 1</h2></div>
+<div id="pause" class="overlay"><h2>Paused</h2></div>
+<div id="results" class="overlay"><h2>Results</h2></div>
+<script type="module" src="js/scenes.js"></script>
+</body>
+</html>
