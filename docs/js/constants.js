@@ -1,0 +1,13 @@
+export const WIDTH = 320;
+export const HEIGHT = 200;
+export const STEP = 1/60;
+export const GRAVITY = 400;
+export const PLAYER_SPEED = 80;
+export const JUMP_VEL = -180;
+export const REBEL_GAIN = 20;
+export const REBEL_MAX = 100;
+export const SURGE_TIME = 4; // seconds
+export const HITSTOP_TIME = 0.1;
+export const SHAKE_MAG = 4;
+export const DASH_IFRAME = 0.2;
+export const HEAVY_ARMOR = 0.3;
